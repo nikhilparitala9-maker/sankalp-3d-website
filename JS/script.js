@@ -492,7 +492,7 @@ document.addEventListener(
                                 event.preventDefault();
 
                                 window.location.href =
-                                    "homepage.html";
+                                    "index.html";
 
                             }
                         );
@@ -650,7 +650,7 @@ document.addEventListener(
                             event.preventDefault();
 
                             window.location.href =
-                                "homepage.html";
+                                "index.html";
 
                         }
                     );
