@@ -55,7 +55,6 @@ function addToCart(name, price) {
             price: price,
             quantity: 1
         });
-
     }
 
     saveCart();
@@ -216,7 +215,6 @@ function displayCart() {
 
         `;
 
-
         cartItems.appendChild(cartItem);
 
     });
@@ -236,19 +234,13 @@ document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-
-        // ==================================
-        // CART
-        // ==================================
-
         updateCartCount();
 
         displayCart();
 
 
-
         // ==================================
-        // MOBILE MENU
+        // FIND MENU
         // ==================================
 
         const menuButton =
@@ -258,13 +250,10 @@ document.addEventListener(
             document.getElementById("navLinks");
 
 
-        // If page doesn't have menu
-        // don't continue
-
         if (!menuButton || !navLinks) {
 
             console.log(
-                "SANKALP 3D: Navigation elements not found."
+                "SANKALP 3D: No mobile menu on this page."
             );
 
             return;
@@ -273,7 +262,7 @@ document.addEventListener(
 
 
         // ==================================
-        // MOBILE MENU CSS
+        // MOBILE MENU STYLES
         // ==================================
 
         const mobileStyle =
@@ -289,33 +278,25 @@ document.addEventListener(
                     z-index: 999999 !important;
                 }
 
-
                 .container.nav {
                     position: relative !important;
                     z-index: 999999 !important;
                 }
 
-
                 #menuButton {
                     display: block !important;
                     visibility: visible !important;
                     opacity: 1 !important;
-
                     position: relative !important;
-
                     z-index: 9999999 !important;
-
                     cursor: pointer !important;
                 }
-
 
                 .container.nav .nav-links {
                     display: none !important;
                 }
 
-
-                .container.nav
-                .nav-links.sankalp-mobile-open {
+                .container.nav .nav-links.sankalp-mobile-open {
 
                     display: flex !important;
 
@@ -360,9 +341,7 @@ document.addEventListener(
                     z-index: 9999998 !important;
                 }
 
-
-                .container.nav
-                .nav-links.sankalp-mobile-open a {
+                .container.nav .nav-links.sankalp-mobile-open a {
 
                     display: block !important;
 
@@ -387,18 +366,9 @@ document.addEventListener(
                     opacity: 1 !important;
                 }
 
-
-                .container.nav
-                .nav-links.sankalp-mobile-open a:hover {
+                .container.nav .nav-links.sankalp-mobile-open a:hover {
 
                     color: #d4af37 !important;
-                }
-
-
-                .container.nav
-                .nav-links.sankalp-mobile-open a:last-child {
-
-                    border-bottom: none !important;
                 }
 
             }
@@ -413,7 +383,7 @@ document.addEventListener(
 
 
         // ==================================
-        // HAMBURGER CLICK
+        // HAMBURGER BUTTON
         // ==================================
 
         menuButton.addEventListener(
@@ -440,11 +410,6 @@ document.addEventListener(
                         "true"
                     );
 
-                    menuButton.setAttribute(
-                        "aria-label",
-                        "Close navigation menu"
-                    );
-
                 } else {
 
                     menuButton.textContent = "☰";
@@ -453,12 +418,6 @@ document.addEventListener(
                         "aria-expanded",
                         "false"
                     );
-
-                    menuButton.setAttribute(
-                        "aria-label",
-                        "Open navigation menu"
-                    );
-
                 }
 
             }
@@ -467,170 +426,89 @@ document.addEventListener(
 
 
         // ==================================
-        // NAVIGATION LINKS
+        // NORMAL NAVIGATION
         // ==================================
-
-        navLinks
-            .querySelectorAll("a")
-            .forEach(
-                function (link) {
-
-                    const text =
-                        link.textContent
-                            .trim()
-                            .toLowerCase();
+        // IMPORTANT:
+        // We use normal HTML navigation.
+        // No preventDefault here.
 
 
-                    // HOME
-
-                    if (text === "home") {
-
-                        link.addEventListener(
-                            "click",
-                            function (event) {
-
-                                event.preventDefault();
-
-                                window.location.href =
-                                    "index.html";
-
-                            }
-                        );
-
-                    }
+        const links =
+            navLinks.querySelectorAll("a");
 
 
-                    // ABOUT
+        links.forEach(function (link) {
 
-                    else if (text === "about") {
-
-                        link.addEventListener(
-                            "click",
-                            function (event) {
-
-                                event.preventDefault();
-
-                                window.location.href =
-                                    "about.html";
-
-                            }
-                        );
-
-                    }
+            const text =
+                link.textContent
+                    .trim()
+                    .toLowerCase();
 
 
-                    // SERVICES
+            if (text === "home") {
 
-                    else if (text === "services") {
+                link.href = "index.html";
 
-                        link.addEventListener(
-                            "click",
-                            function (event) {
-
-                                event.preventDefault();
-
-                                window.location.href =
-                                    "services.html";
-
-                            }
-                        );
-
-                    }
+            }
 
 
-                    // PRODUCTS
+            else if (text === "about") {
 
-                    else if (text === "products") {
+                link.href = "about.html";
 
-                        link.addEventListener(
-                            "click",
-                            function (event) {
-
-                                event.preventDefault();
-
-                                window.location.href =
-                                    "products.html";
-
-                            }
-                        );
-
-                    }
+            }
 
 
-                    // HOW IT WORKS
+            else if (text === "services") {
 
-                    else if (
-                        text === "how it works"
-                    ) {
+                link.href = "services.html";
 
-                        link.addEventListener(
-                            "click",
-                            function (event) {
-
-                                event.preventDefault();
-
-                                window.location.href =
-                                    "how-it-works.html";
-
-                            }
-                        );
-
-                    }
+            }
 
 
-                    // CONTACT
+            else if (text === "products") {
 
-                    else if (text === "contact") {
+                link.href = "products.html";
 
-                        link.addEventListener(
-                            "click",
-                            function (event) {
-
-                                event.preventDefault();
-
-                                window.location.href =
-                                    "contact.html";
-
-                            }
-                        );
-
-                    }
-
-                }
-            );
+            }
 
 
+            else if (text === "how it works") {
 
-        // ==================================
-        // CLOSE MENU AFTER CLICK
-        // ==================================
+                link.href = "how-it-works.html";
 
-        navLinks
-            .querySelectorAll("a")
-            .forEach(
-                function (link) {
+            }
 
-                    link.addEventListener(
-                        "click",
-                        function () {
 
-                            navLinks.classList.remove(
-                                "sankalp-mobile-open"
-                            );
+            else if (text === "contact") {
 
-                            menuButton.textContent =
-                                "☰";
+                link.href = "contact.html";
 
-                            menuButton.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
+            }
 
-                        }
+
+            // Close mobile menu
+            // before normal navigation
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    navLinks.classList.remove(
+                        "sankalp-mobile-open"
+                    );
+
+                    menuButton.textContent = "☰";
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
                     );
 
                 }
             );
+
+        });
 
 
 
@@ -640,23 +518,11 @@ document.addEventListener(
 
         document
             .querySelectorAll(".logo")
-            .forEach(
-                function (logo) {
+            .forEach(function (logo) {
 
-                    logo.addEventListener(
-                        "click",
-                        function (event) {
+                logo.href = "index.html";
 
-                            event.preventDefault();
-
-                            window.location.href =
-                                "index.html";
-
-                        }
-                    );
-
-                }
-            );
+            });
 
 
 
@@ -666,36 +532,34 @@ document.addEventListener(
 
         document
             .querySelectorAll("a")
-            .forEach(
-                function (link) {
+            .forEach(function (link) {
 
-                    const text =
-                        link.textContent
-                            .trim()
-                            .toLowerCase();
-
-
-                    if (
-                        text.includes("get a quote")
-                    ) {
-
-                        link.href =
-                            "contact.html";
-
-                    }
+                const text =
+                    link.textContent
+                        .trim()
+                        .toLowerCase();
 
 
-                    if (
-                        text === "explore services"
-                    ) {
+                if (
+                    text.includes("get a quote")
+                ) {
 
-                        link.href =
-                            "services.html";
-
-                    }
+                    link.href =
+                        "contact.html";
 
                 }
-            );
+
+
+                if (
+                    text === "explore services"
+                ) {
+
+                    link.href =
+                        "services.html";
+
+                }
+
+            });
 
     }
 );
