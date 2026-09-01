@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | SANKALP 3D</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="container nav">
+
+            <a href="homepage.html" class="logo">
+                <img src="assets/logo.png" alt="SANKALP 3D">
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="homepage.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="products.html">Products</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="contact.html">Contact</a>
+
+            </nav>
+
+            <a href="contact.html" class="button">
+                Get a Quote
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTACT PAGE -->
+
+    <main>
+
+        <section class="contact-page">
+
+            <div class="container">
+
+                <!-- INTRO -->
+
+                <div class="contact-intro">
+
+                    <p class="section-label">
+                        CONTACT US
+                    </p>
+
+                    <h1>
+                        Let's create something
+                        <br>
+                        together.
+                    </h1>
+
+                    <p class="contact-lead">
+                        Have an idea, product requirement, or
+                        custom 3D printing project?
+                        Tell us what you have in mind and
+                        we'll help turn your idea into reality.
+                    </p>
+
+                </div>
+
+
+                <!-- CONTACT GRID -->
+
+                <div class="contact-grid">
+
+
+                    <!-- LEFT SIDE -->
+
+                    <div class="contact-info">
+
+
+                        <!-- 🔴 CHANGE PHONE HERE -->
+
+                        <div class="contact-info-block">
+
+                            <span>
+                                PHONE
+                            </span>
+
+                            <h3>
+                                +91 9014389831
+                            </h3>
+
+                        </div>
+
+
+                        <!-- orderssankalp@gmail.com -->
+
+                        <div class="contact-info-block">
+
+                            <span>
+                                EMAIL
+                            </span>
+
+                            <h3>
+                                orderssankalp@gmail.com
+                            </h3>
+
+                        </div>
+
+
+                        <!-- 🔴 CHANGE LOCATION HERE -->
+
+                        <div class="contact-info-block">
+
+                            <span>
+                                LOCATION
+                            </span>
+
+                            <h3>
+                                Hyderabad, Telangana
+                            </h3>
+
+                        </div>
+
+
+                        <!-- 🔴 CHANGE BUSINESS HOURS HERE -->
+
+                        <div class="contact-info-block">
+
+                            <span>
+                                BUSINESS HOURS
+                            </span>
+
+                            <h3>
+                                Mon – Sat
+                                <br>
+                                9:00 AM – 6:00 PM
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- RIGHT SIDE -->
+
+                    <div class="contact-form-wrapper">
+
+                        <p class="form-label">
+                            SEND AN ENQUIRY
+                        </p>
+
+
+                        <form id="contactForm">
+
+
+                            <div class="form-group">
+
+                                <label for="name">
+                                    Your Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    placeholder="Enter your name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    Email Address
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Enter your email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone Number
+                                </label>
+
+                                <input
+    type="tel"
+    id="phone"
+    name="phone"
+    placeholder="Enter 10-digit phone number"
+    maxlength="10"
+    minlength="10"
+    pattern="[6-9][0-9]{9}"
+    inputmode="numeric"
+    required
+>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="requirement">
+                                    What do you need?
+                                </label>
+
+                                <select id="requirement" required>
+
+                                    <option value="">
+                                        Select a service
+                                    </option>
+
+                                    <option value="3D Printing">
+                                        3D Printing
+                                    </option>
+
+                                    <option value="Custom 3D Design">
+                                        Custom 3D Design
+                                    </option>
+
+                                    <option value="Functional Parts">
+                                        Functional Parts
+                                    </option>
+
+                                    <option value="Miniature Models">
+                                        Miniature Models
+                                    </option>
+
+                                    <option value="Product Design">
+                                        Product Design
+                                    </option>
+
+                                    <option value="Rapid Prototyping">
+                                        Rapid Prototyping
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="message">
+                                    Tell us about your project
+                                </label>
+
+                                <textarea
+                                    id="message"
+                                    rows="6"
+                                    placeholder="Describe your idea or requirement..."
+                                    required
+                                ></textarea>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="contact-submit">
+
+                                SEND ENQUIRY
+                                <span>→</span>
+
+                            </button>
+
+
+                            <p id="formMessage"></p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="container">
+
+            <p>
+                © 2026 SANKALP 3D. All Rights Reserved.
+            </p>
+
+            <p>
+                Designed &amp; Developed by
+                <strong>Xennora Solutions</strong>
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- FORM SCRIPT -->
+
+    <script>
+
+        const form =
+            document.getElementById("contactForm");
+
+        const message =
+            document.getElementById("formMessage");
+
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            message.textContent =
+                "Thank you! Your enquiry has been received.";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
