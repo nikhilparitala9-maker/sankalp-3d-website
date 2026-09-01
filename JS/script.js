@@ -236,3 +236,347 @@ document.addEventListener("DOMContentLoaded", function () {
     displayCart();
 
 });
+/* =========================================================
+   SANKALP 3D - NAVIGATION + BUTTON FIX
+   Add this code at the END of JS/script.js
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.querySelector(".nav-links");
+
+    /* ---------- Mobile Menu ---------- */
+
+    if (menuButton && navLinks) {
+
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+
+        const style = document.createElement("style");
+
+        style.id = "sankalp-navigation-fix";
+
+        style.textContent = `
+            @media (max-width: 900px) {
+
+                .nav-links.sankalp-mobile-open {
+                    display: flex !important;
+                    position: absolute !important;
+                    top: 100% !important;
+                    left: 0 !important;
+                    right: 0 !important;
+                    width: 100% !important;
+                    max-width: none !important;
+                    margin: 0 !important;
+                    padding: 18px 20px !important;
+                    flex-direction: column !important;
+                    align-items: stretch !important;
+                    justify-content: flex-start !important;
+                    gap: 0 !important;
+                    background: #050505 !important;
+                    border-top: 1px solid #242424 !important;
+                    border-bottom: 1px solid #242424 !important;
+                    z-index: 99999 !important;
+                }
+
+                .nav-links.sankalp-mobile-open a {
+                    display: block !important;
+                    width: 100% !important;
+                    padding: 15px 4px !important;
+                    text-align: left !important;
+                    border-bottom: 1px solid #1d1d1d !important;
+                }
+
+                .nav-links.sankalp-mobile-open a:last-child {
+                    border-bottom: 0 !important;
+                }
+
+                .container.nav {
+                    position: relative !important;
+                }
+
+                .menu-button {
+                    position: relative !important;
+                    z-index: 100000 !important;
+                    cursor: pointer !important;
+                }
+            }
+        `;
+
+        document.head.appendChild(style);
+
+
+        menuButton.addEventListener("click", function (event) {
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            const isOpen =
+                navLinks.classList.toggle("sankalp-mobile-open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuButton.setAttribute(
+                "aria-label",
+                isOpen ? "Close menu" : "Open menu"
+            );
+
+            menuButton.textContent =
+                isOpen ? "✕" : "☰";
+        });
+
+
+        /* Close menu when clicking outside */
+
+        document.addEventListener("click", function (event) {
+
+            if (
+                navLinks.classList.contains("sankalp-mobile-open") &&
+                !navLinks.contains(event.target) &&
+                !menuButton.contains(event.target)
+            ) {
+
+                navLinks.classList.remove(
+                    "sankalp-mobile-open"
+                );
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuButton.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+
+                menuButton.textContent = "☰";
+            }
+        });
+    }
+
+
+    /* ---------- Page Routes ---------- */
+
+    const routes = {
+
+        "home": "homepage.html",
+        "about": "about.html",
+        "services": "services.html",
+        "products": "products.html",
+        "how it works": "how-it-works.html",
+        "contact": "contact.html",
+        "cart": "cart.html"
+
+    };
+
+
+    /* ---------- Clean Text ---------- */
+
+    function cleanText(text) {
+
+        return text
+            .replace(/\s+/g, " ")
+            .trim()
+            .toLowerCase();
+
+    }
+
+
+    /* ---------- Navigation From Button Text ---------- */
+
+    function navigateFromText(element) {
+
+        const text =
+            cleanText(element.textContent);
+
+
+        /* Get a Quote */
+
+        if (text.includes("get a quote")) {
+
+            window.location.href =
+                "contact.html";
+
+            return true;
+        }
+
+
+        /* Explore Services */
+
+        if (text === "explore services") {
+
+            window.location.href =
+                "services.html";
+
+            return true;
+        }
+
+
+        /* Cart */
+
+        if (
+            text === "cart" ||
+            text.startsWith("cart ")
+        ) {
+
+            window.location.href =
+                "cart.html";
+
+            return true;
+        }
+
+
+        return false;
+    }
+
+
+    /* ---------- Reliable Button Navigation ---------- */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            const clickable =
+                event.target.closest(
+                    "a, button, .button, .nav-button, .cart-link"
+                );
+
+            if (!clickable) return;
+
+
+            /* Don't break Add to Cart */
+
+            if (
+                clickable.classList.contains(
+                    "add-cart"
+                )
+            ) {
+                return;
+            }
+
+
+            /* Menu handled separately */
+
+            if (
+                clickable.id === "menuButton"
+            ) {
+                return;
+            }
+
+
+            if (
+                navigateFromText(clickable)
+            ) {
+
+                event.preventDefault();
+
+
+                /* Close mobile menu */
+
+                if (
+                    navLinks &&
+                    navLinks.classList.contains(
+                        "sankalp-mobile-open"
+                    )
+                ) {
+
+                    navLinks.classList.remove(
+                        "sankalp-mobile-open"
+                    );
+                }
+            }
+
+        }
+    );
+
+
+    /* ---------- Fix Header Navigation ---------- */
+
+    document
+        .querySelectorAll(".nav-links a")
+        .forEach(function (link) {
+
+            const text =
+                cleanText(link.textContent);
+
+            if (routes[text]) {
+
+                link.setAttribute(
+                    "href",
+                    routes[text]
+                );
+            }
+
+        });
+
+
+    /* ---------- Logo → Homepage ---------- */
+
+    document
+        .querySelectorAll(".logo")
+        .forEach(function (logo) {
+
+            logo.setAttribute(
+                "href",
+                "homepage.html"
+            );
+
+        });
+
+
+    /* ---------- Fix Quote Buttons ---------- */
+
+    document
+        .querySelectorAll("a, button")
+        .forEach(function (element) {
+
+            const text =
+                cleanText(element.textContent);
+
+
+            if (
+                text.includes("get a quote")
+            ) {
+
+                element.setAttribute(
+                    "data-sankalp-quote",
+                    "true"
+                );
+
+                if (
+                    element.tagName === "A"
+                ) {
+
+                    element.setAttribute(
+                        "href",
+                        "contact.html"
+                    );
+                }
+            }
+
+
+            /* Explore Services */
+
+            if (
+                text === "explore services"
+            ) {
+
+                if (
+                    element.tagName === "A"
+                ) {
+
+                    element.setAttribute(
+                        "href",
+                        "services.html"
+                    );
+                }
+            }
+
+        });
+
+});
