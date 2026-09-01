@@ -815,3 +815,30 @@ document.addEventListener(
 
     }
 );
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+
+    console.log("SANKALP MENU TEST", menuButton, navLinks);
+
+    if (!menuButton || !navLinks) {
+        alert("MENU ELEMENT NOT FOUND");
+        return;
+    }
+
+    menuButton.onclick = function () {
+
+        console.log("MENU CLICKED");
+
+        navLinks.classList.toggle("sankalp-mobile-open");
+
+        if (navLinks.classList.contains("sankalp-mobile-open")) {
+            menuButton.textContent = "✕";
+        } else {
+            menuButton.textContent = "☰";
+        }
+
+    };
+
+});
