@@ -497,9 +497,66 @@ function setupMobileMenu() {
     // MENU BUTTON CLICK
     // ========================================================
 
-    menuButton.addEventListener(
-        "click",
-        function (event) {
+   menuButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const isOpen = navLinks.classList.toggle("sankalp-mobile-open");
+
+    if (isOpen) {
+        navLinks.style.cssText = `
+            display: flex !important;
+            position: absolute !important;
+            top: 100% !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 0 !important;
+            margin: 0 !important;
+            padding: 15px 20px 20px !important;
+            background: #000 !important;
+            z-index: 999999 !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        `;
+
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.style.cssText = `
+                display: block !important;
+                width: 100% !important;
+                padding: 15px 5px !important;
+                color: #fff !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            `;
+        });
+
+        menuButton.textContent = "✕";
+        menuButton.setAttribute("aria-expanded", "true");
+
+    } else {
+        navLinks.style.removeProperty("display");
+        navLinks.style.removeProperty("position");
+        navLinks.style.removeProperty("top");
+        navLinks.style.removeProperty("left");
+        navLinks.style.removeProperty("right");
+        navLinks.style.removeProperty("width");
+        navLinks.style.removeProperty("flex-direction");
+        navLinks.style.removeProperty("align-items");
+        navLinks.style.removeProperty("gap");
+        navLinks.style.removeProperty("margin");
+        navLinks.style.removeProperty("padding");
+        navLinks.style.removeProperty("background");
+        navLinks.style.removeProperty("z-index");
+        navLinks.style.removeProperty("visibility");
+        navLinks.style.removeProperty("opacity");
+
+        menuButton.textContent = "☰";
+        menuButton.setAttribute("aria-expanded", "false");
+    }
+});
 
             event.preventDefault();
 
