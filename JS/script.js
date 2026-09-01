@@ -580,3 +580,39 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 });
+/* =========================================================
+   SANKALP 3D - MOBILE MENU
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (!menuButton || !navLinks) {
+        return;
+    }
+
+    menuButton.addEventListener("click", function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        navLinks.classList.toggle("mobile-menu-open");
+
+    });
+
+
+    /* Close menu after clicking a navigation link */
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("mobile-menu-open");
+
+        });
+
+    });
+
+});
